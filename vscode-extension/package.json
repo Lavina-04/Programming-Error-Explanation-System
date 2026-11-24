@@ -1,0 +1,28 @@
+{
+  "name": "programming-error-explanation",
+  "displayName": "Programming Error Explanation",
+  "description": "Explains errors in the current Python, Java, C or C++ file in plain language, with hints before answers.",
+  "version": "0.1.0",
+  "publisher": "local",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Education", "Other"],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "pees.analyzeCurrentFile", "title": "Explain Errors in Current File" },
+      { "command": "pees.clear", "title": "Clear Error Explanation" }
+    ],
+    "keybindings": [
+      { "command": "pees.analyzeCurrentFile", "key": "ctrl+alt+e", "mac": "cmd+alt+e", "when": "editorTextFocus" }
+    ],
+    "configuration": {
+      "title": "Programming Error Explanation",
+      "properties": {
+        "pees.serverUrl": { "type": "string", "default": "http://127.0.0.1:5001", "description": "URL of the running backend (python app.py)." },
+        "pees.skillLevel": { "type": "string", "enum": ["beginner", "intermediate"], "default": "beginner" },
+        "pees.analyzeOnSave": { "type": "boolean", "default": false, "description": "Explain errors automatically whenever a supported file is saved." }
+      }
+    }
+  }
+}
